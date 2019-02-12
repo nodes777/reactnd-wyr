@@ -6,12 +6,22 @@ import {
 } from "./_DATA.js";
 
 export function getInitialData() {
-  return Promise.all([_getUsers(), _getQuestions()]).then(
+  return Promise.all([getUsers(), _getQuestions()]).then(
     ([users, questions]) => ({
       users,
-      questions
+      questions,
+      loaded: true
     })
   );
+}
+
+function getUsers() {
+  return _getUsers().then(users => {
+    const allIds = Object.keys(users);
+    users.allIds = allIds;
+    console.log(users);
+    return users;
+  });
 }
 
 export function saveQuestion(info) {

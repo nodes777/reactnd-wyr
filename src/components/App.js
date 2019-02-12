@@ -5,7 +5,7 @@ import { handleInitialData } from "../actions/shared";
 import LoadingBar from "react-redux-loading";
 
 import Nav from "./Nav";
-
+import SignIn from "./SignIn";
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData());
@@ -15,10 +15,13 @@ class App extends Component {
       <Router>
         <Fragment>
           <LoadingBar />
-          <div className="App">
-            <div>
-              <Nav />
-            </div>
+          <div className="App center">
+            <Nav />
+            {this.props.usersAreLoaded === true ? null : (
+              <div>
+                <SignIn />
+              </div>
+            )}
           </div>
         </Fragment>
       </Router>
@@ -26,9 +29,10 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ users }) {
   return {
-    loading: authedUser === null
+    usersAreLoaded:
+      Object.entries(users).length === 0 && users.constructor === Object
   };
 }
 
