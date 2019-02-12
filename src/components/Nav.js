@@ -1,12 +1,19 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 
+import { handleLogout } from "../actions/authedUser";
+
 class Nav extends Component {
-	componentDidMount() {
-		console.log(this.props);
-	}
+	componentDidMount() {}
+	handleLogoutBtn = () => {
+		// because we're connected (mapStateToProps), this is available in props
+		const { dispatch } = this.props;
+		dispatch(handleLogout());
+	};
 	render() {
+		const { authedUser, userName } = this.props;
+		console.log(this.props);
 		return (
 			<nav className="nav">
 				<ul>
@@ -21,16 +28,33 @@ class Nav extends Component {
 					<li>
 						<NavLink to="/leaderboard">Leaderboard</NavLink>
 					</li>
+					{userName && (
+						<Fragment>
+							<li>Hello, {userName}</li>
+							<li>
+								<button
+									className=""
+									onClick={this.handleLogoutBtn}
+								>
+									Logout
+								</button>
+							</li>
+						</Fragment>
+					)}
 				</ul>
-				{/* if logged in, render the profile link, and logout button here*/}
 			</nav>
 		);
 	}
 }
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authedUser, users }) {
+	// BUG: Loading will be true when the user logs out
+	let loading = authedUser === null;
+
 	return {
-		loading: authedUser === null
+		loading: loading,
+		authedUser: authedUser,
+		userName: authedUser === null ? null : users[authedUser].name
 	};
 }
 
