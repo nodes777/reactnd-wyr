@@ -20,3 +20,17 @@ export function handleLogout() {
 		// })
 	};
 }
+
+export function handleLogin(userID) {
+	return dispatch => {
+		// optimistic update
+		dispatch(setAuthedUser(userID));
+
+		// return saveLikeToggle(info).catch((e) => {
+		// 	console.warn(`Error in handleToggleTweet: ${e}`)
+		// 	// reset it to initial
+		// 	dispatch(toggleTweet(info))
+		// 	alert(`There was an error liking the tweet, try again`)
+		// })
+	};
+}
