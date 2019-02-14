@@ -7,6 +7,7 @@ import LoadingBar from "react-redux-loading";
 import Nav from "./Nav";
 import SignIn from "./SignIn";
 import Home from "./Home";
+import Leaderboard from "./Leaderboard";
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData());
@@ -21,7 +22,14 @@ class App extends Component {
             <Nav />
             {this.props.loaded === false ? null : (
               <div>
-                {this.props.authedUser === null ? <SignIn /> : <Home />}
+                {this.props.authedUser === null ? (
+                  <SignIn />
+                ) : (
+                  <Fragment>
+                    <Home />
+                    <Leaderboard />
+                  </Fragment>
+                )}
               </div>
             )}
           </div>
