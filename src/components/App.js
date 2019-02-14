@@ -21,8 +21,7 @@ class App extends Component {
             <Nav />
             {this.props.loaded === false ? null : (
               <div>
-                <SignIn />
-                <Home />
+                {this.props.authedUser === null ? <SignIn /> : <Home />}
               </div>
             )}
           </div>
@@ -32,8 +31,9 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ loadingBar }) {
+function mapStateToProps({ loadingBar, authedUser }) {
   return {
+    authedUser: authedUser,
     loaded: loadingBar.default === 0
   };
 }
