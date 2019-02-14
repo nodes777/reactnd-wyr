@@ -66,3 +66,9 @@ li {
 	font-weight: 700;
 	border-width: 2px;
 }
+
+.active,
+.btn:hover {
+	background-color: #666;
+	color: white;
+}

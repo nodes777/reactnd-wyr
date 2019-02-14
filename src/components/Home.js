@@ -15,7 +15,6 @@ class Home extends Component {
 	};
 	render() {
 		const { authedUser, users, questions } = this.props;
-		console.log(this.props);
 		const answeredQuestionIDs = questions.allIds.filter(currentValue => {
 			return (
 				Object.keys(users[authedUser].answers).indexOf(currentValue) >
@@ -29,16 +28,27 @@ class Home extends Component {
 				-1
 			);
 		});
+
+		let unansweredButton = "btn";
+		let answeredButton = "btn";
+		if (this.state.showQuestions === "unanswered") {
+			unansweredButton += " active";
+		} else {
+			answeredButton += " active";
+		}
+
 		return (
 			<div className="container">
 				<button
+					className={unansweredButton}
 					onClick={() =>
 						this.setState({ showQuestions: "unanswered" })
 					}
 				>
-					Unanswered Question
+					Unanswered Questions
 				</button>
 				<button
+					className={answeredButton}
 					onClick={() => this.setState({ showQuestions: "answered" })}
 				>
 					Answered Questions
