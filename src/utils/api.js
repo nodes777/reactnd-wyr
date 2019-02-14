@@ -6,7 +6,7 @@ import {
 } from "./_DATA.js";
 
 export function getInitialData() {
-  return Promise.all([getUsers(), _getQuestions()]).then(
+  return Promise.all([getUsers(), getQuestions()]).then(
     ([users, questions]) => ({
       users,
       questions,
@@ -19,8 +19,15 @@ function getUsers() {
   return _getUsers().then(users => {
     const allIds = Object.keys(users);
     users.allIds = allIds;
-    console.log(users);
     return users;
+  });
+}
+
+function getQuestions() {
+  return _getQuestions().then(questions => {
+    const allIds = Object.keys(questions);
+    questions.allIds = allIds;
+    return questions;
   });
 }
 

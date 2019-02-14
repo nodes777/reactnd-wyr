@@ -13,7 +13,6 @@ class Nav extends Component {
 	};
 	render() {
 		const { authedUser, userName } = this.props;
-		console.log(this.props);
 		return (
 			<nav className="nav">
 				<ul>

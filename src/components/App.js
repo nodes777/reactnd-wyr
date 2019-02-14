@@ -6,9 +6,11 @@ import LoadingBar from "react-redux-loading";
 
 import Nav from "./Nav";
 import SignIn from "./SignIn";
+import Home from "./Home";
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData());
+    console.log(this.props);
   }
   render() {
     return (
@@ -17,9 +19,10 @@ class App extends Component {
           <LoadingBar />
           <div className="App center">
             <Nav />
-            {this.props.usersAreLoaded === true ? null : (
+            {this.props.loaded === false ? null : (
               <div>
                 <SignIn />
+                <Home />
               </div>
             )}
           </div>
@@ -29,10 +32,9 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ users }) {
+function mapStateToProps({ loadingBar }) {
   return {
-    usersAreLoaded:
-      Object.entries(users).length === 0 && users.constructor === Object
+    loaded: loadingBar.default === 0
   };
 }
 
