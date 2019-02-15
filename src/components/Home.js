@@ -6,10 +6,6 @@ import Question from "./Question";
 
 class Home extends Component {
 	componentDidMount() {}
-	handleLogoutBtn = () => {
-		// because we're connected (mapStateToProps), this is available in props
-		const { dispatch } = this.props;
-	};
 	state = {
 		showQuestions: "unanswered"
 	};

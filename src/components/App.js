@@ -8,6 +8,8 @@ import Nav from "./Nav";
 import SignIn from "./SignIn";
 import Home from "./Home";
 import Leaderboard from "./Leaderboard";
+import NewQuestion from "./NewQuestion";
+
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData());
@@ -26,8 +28,9 @@ class App extends Component {
                   <SignIn />
                 ) : (
                   <Fragment>
-                    <Home />
-                    <Leaderboard />
+                    <Route path="/" exact component={Home} />
+                    <Route path="/leaderboard" exact component={Leaderboard} />
+                    <Route path="/new" exact component={NewQuestion} />
                   </Fragment>
                 )}
               </div>
