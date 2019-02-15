@@ -15,7 +15,7 @@ class Nav extends Component {
 		const { userName } = this.props;
 		return (
 			<nav className="nav">
-				<ul>
+				<ul className="nav center">
 					<li>
 						<NavLink to="/">Home</NavLink>
 					</li>

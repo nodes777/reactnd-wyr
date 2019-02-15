@@ -14,12 +14,12 @@ class Leaderboard extends Component {
 					const answered = Object.keys(currentUser.answers).length;
 					const score = asked + answered;
 					return (
-						<Fragment>
+						<div key={user}>
 							<h2>{currentUser.name}</h2>
 							<div>Asked {asked}</div>
 							<div>Answered {answered}</div>
 							<div>Score {score}</div>
-						</Fragment>
+						</div>
 					);
 				})}
 			</div>
