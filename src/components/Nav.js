@@ -12,7 +12,7 @@ class Nav extends Component {
 		dispatch(handleLogout());
 	};
 	render() {
-		const { authedUser, userName } = this.props;
+		const { userName } = this.props;
 		return (
 			<nav className="nav">
 				<ul>

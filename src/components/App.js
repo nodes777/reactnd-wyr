@@ -9,12 +9,13 @@ import SignIn from "./SignIn";
 import Home from "./Home";
 import Leaderboard from "./Leaderboard";
 import NewQuestion from "./NewQuestion";
+import Question from "./Question";
 
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData());
-    console.log(this.props);
   }
+
   render() {
     return (
       <Router>
@@ -31,6 +32,7 @@ class App extends Component {
                     <Route path="/" exact component={Home} />
                     <Route path="/leaderboard" exact component={Leaderboard} />
                     <Route path="/new" exact component={NewQuestion} />
+                    <Route path="/question/:id" exact component={Question} />
                   </Fragment>
                 )}
               </div>

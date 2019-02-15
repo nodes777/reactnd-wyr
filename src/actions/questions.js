@@ -32,10 +32,22 @@ export function handleAddQuestion(info) {
 
 		//dispatch(showLoading());
 		return saveQuestion(info).then(question => {
-			console.log(question);
 			dispatch(addQuestion(question));
 		});
 		// show and hiding the loading bar prevents the redirect to home. Why?
+		//.then(() => dispatch(hideLoading()));
+	};
+}
+
+export function handleAddQuestionAnswer(info) {
+	return (dispatch, getState) => {
+		//const { authedUser } = getState()
+
+		//dispatch(showLoading());
+		return saveQuestionAnswer(info).then(answer => {
+			console.log(answer);
+			dispatch(addQuestionAnswer(answer));
+		});
 		//.then(() => dispatch(hideLoading()));
 	};
 }

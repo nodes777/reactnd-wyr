@@ -1,8 +1,7 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
 
-import Question from "./Question";
+import QuestionPreview from "./QuestionPreview";
 
 class Home extends Component {
 	componentDidMount() {}
@@ -51,15 +50,15 @@ class Home extends Component {
 				</button>
 				{this.state.showQuestions === "unanswered"
 					? unansweredQuestionIDs.map(questionID => (
-							<Question
+							<QuestionPreview
 								key={questionID}
-								questionID={questionID}
+								question={questions[questionID]}
 							/>
 					  ))
 					: answeredQuestionIDs.map(questionID => (
-							<Question
+							<QuestionPreview
 								key={questionID}
-								questionID={questionID}
+								question={questions[questionID]}
 							/>
 					  ))}
 			</div>

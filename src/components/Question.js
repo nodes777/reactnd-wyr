@@ -1,25 +1,32 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 
 class Question extends Component {
 	componentDidMount() {}
 
 	render() {
-		const { authedUser, users, questions, questionID } = this.props;
+		const { question, users } = this.props;
+		console.log(this.props);
+		const author = users[question.author].name;
 		return (
-			<div key={questionID}>
+			<div>
+				<div>Asked by {author}</div>
+				<img
+					src={users[question.author].avatarURL}
+					alt=""
+					width="50"
+					height="50"
+				/>
 				<div>Would You Rather?</div>
 				<div>
 					<input
 						type="radio"
 						id="optionOne"
 						name="option"
-						value="questions[questionID].optionOne.text"
-						checked
+						value={question.optionOne.text}
+						defaultChecked
 					/>
-					<label for="optionOne">
-						{questions[questionID].optionOne.text}
-					</label>
+					<label htmlFor="optionOne">{question.optionOne.text}</label>
 				</div>
 				<div>or</div>
 				<div>
@@ -27,12 +34,9 @@ class Question extends Component {
 						type="radio"
 						id="optionTwo"
 						name="option"
-						value="questions[questionID].optionTwo.text"
-						checked
+						value={question.optionTwo.text}
 					/>
-					<label for="optionTwo">
-						{questions[questionID].optionTwo.text}
-					</label>
+					<label htmlFor="optionTwo">{question.optionTwo.text}</label>
 				</div>
 				<button type="submit">Submit</button>
 			</div>
@@ -40,11 +44,13 @@ class Question extends Component {
 	}
 }
 
-function mapStateToProps({ authedUser, users, questions }) {
+function mapStateToProps({ authedUser, users, questions }, props) {
+	const { id } = props.match.params;
+
 	return {
 		authedUser: authedUser,
 		users: users,
-		questions: questions
+		question: questions[id]
 	};
 }
 
