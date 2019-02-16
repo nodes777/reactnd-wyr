@@ -11,6 +11,7 @@ class NewQuestion extends Component {
 		toHome: false
 	};
 
+	// can this be refactored to one handle text entry?
 	handleTextEntryOptionOne = e => {
 		const text = e.target.value;
 		this.setState(() => ({

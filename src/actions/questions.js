@@ -19,6 +19,7 @@ const addQuestion = question => {
 	};
 };
 
+// actions go to all reducers
 const addQuestionAnswer = answer => {
 	return {
 		type: ADD_QUESTION_ANSWER,
@@ -44,9 +45,8 @@ export function handleAddQuestionAnswer(info) {
 		//const { authedUser } = getState()
 
 		//dispatch(showLoading());
-		return saveQuestionAnswer(info).then(answer => {
-			console.log(answer);
-			dispatch(addQuestionAnswer(answer));
+		return saveQuestionAnswer(info).then(() => {
+			dispatch(addQuestionAnswer(info));
 		});
 		//.then(() => dispatch(hideLoading()));
 	};

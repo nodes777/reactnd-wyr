@@ -1,13 +1,45 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import { handleAddQuestionAnswer } from "../actions/questions";
+
+import Poll from "./Poll";
+import Results from "./Results";
+
 class Question extends Component {
 	componentDidMount() {}
 
+	state = {
+		selectedAnswer: "optionOne"
+	};
+
+	handleOptionChange = e => {
+		const text = e.target.value;
+		this.setState(() => ({
+			selectedAnswer: text
+		}));
+	};
+
+	handleSubmit = e => {
+		e.preventDefault();
+		const { selectedAnswer } = this.state;
+		const { dispatch, authedUser, qid } = this.props;
+
+		const info = {
+			answer: selectedAnswer,
+			qid: qid,
+			authedUser: authedUser
+		};
+
+		dispatch(handleAddQuestionAnswer(info));
+	};
+
 	render() {
-		const { question, users } = this.props;
-		console.log(this.props);
+		const { question, users, authedUser, qid } = this.props;
 		const author = users[question.author].name;
+		// is there a better way to check if this question has been answered by this user?
+		const questionAnswered = users[authedUser].answers.hasOwnProperty(qid);
+
 		return (
 			<div>
 				<div>Asked by {author}</div>
@@ -18,27 +50,16 @@ class Question extends Component {
 					height="50"
 				/>
 				<div>Would You Rather?</div>
-				<div>
-					<input
-						type="radio"
-						id="optionOne"
-						name="option"
-						value={question.optionOne.text}
-						defaultChecked
+				{questionAnswered ? (
+					<Results question={question} />
+				) : (
+					<Poll
+						question={question}
+						selectedAnswer={this.state.selectedAnswer}
+						handleOptionChange={this.handleOptionChange}
+						handleSubmit={this.handleSubmit}
 					/>
-					<label htmlFor="optionOne">{question.optionOne.text}</label>
-				</div>
-				<div>or</div>
-				<div>
-					<input
-						type="radio"
-						id="optionTwo"
-						name="option"
-						value={question.optionTwo.text}
-					/>
-					<label htmlFor="optionTwo">{question.optionTwo.text}</label>
-				</div>
-				<button type="submit">Submit</button>
+				)}
 			</div>
 		);
 	}
@@ -50,7 +71,8 @@ function mapStateToProps({ authedUser, users, questions }, props) {
 	return {
 		authedUser: authedUser,
 		users: users,
-		question: questions[id]
+		question: questions[id],
+		qid: id
 	};
 }
 
