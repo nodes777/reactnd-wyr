@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { handleInitialData } from "../actions/shared";
 import LoadingBar from "react-redux-loading";
 
@@ -10,7 +10,7 @@ import Home from "./Home";
 import Leaderboard from "./Leaderboard";
 import NewQuestion from "./NewQuestion";
 import Question from "./Question";
-
+import NoMatch from "./NoMatch";
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData());
@@ -28,12 +28,13 @@ class App extends Component {
                 {this.props.authedUser === null ? (
                   <SignIn />
                 ) : (
-                  <Fragment>
+                  <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/leaderboard" exact component={Leaderboard} />
                     <Route path="/new" exact component={NewQuestion} />
                     <Route path="/question/:id" exact component={Question} />
-                  </Fragment>
+                    <Route component={NoMatch} />
+                  </Switch>
                 )}
               </div>
             )}
