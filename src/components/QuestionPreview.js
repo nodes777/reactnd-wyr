@@ -3,10 +3,8 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 class QuestionPreview extends Component {
-	componentDidMount() {}
-
 	render() {
-		const { question, questions, users } = this.props;
+		const { question, users } = this.props;
 		const author = users[question.author].name;
 		return (
 			<div key={question.id}>
@@ -26,11 +24,10 @@ class QuestionPreview extends Component {
 	}
 }
 
-function mapStateToProps({ authedUser, users, questions }) {
+function mapStateToProps({ authedUser, users }) {
 	return {
 		authedUser: authedUser,
-		users: users,
-		questions: questions
+		users: users
 	};
 }
 

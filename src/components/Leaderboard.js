@@ -1,11 +1,9 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { byScore } from "../utils/utils";
+//import { byScore } from "../utils/utils";
 
 class Leaderboard extends Component {
-	componentDidMount() {}
-
 	render() {
 		const { users } = this.props;
 		return (
@@ -35,6 +33,12 @@ class Leaderboard extends Component {
 						return (
 							<div key={userId}>
 								<h2>{currentUser.name}</h2>
+								<img
+									src={currentUser.avatarURL}
+									alt=""
+									width="50"
+									height="50"
+								/>
 								<div>Asked {asked}</div>
 								<div>Answered {answered}</div>
 								<div>Score {score}</div>
