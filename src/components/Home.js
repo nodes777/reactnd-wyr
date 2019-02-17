@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import QuestionPreview from "./QuestionPreview";
+import { byTimeStamp } from "../utils/utils.js";
 
 class Home extends Component {
 	componentDidMount() {}
@@ -49,18 +50,22 @@ class Home extends Component {
 					Answered Questions
 				</button>
 				{this.state.showQuestions === "unanswered"
-					? unansweredQuestionIDs.map(questionID => (
-							<QuestionPreview
-								key={questionID}
-								question={questions[questionID]}
-							/>
-					  ))
-					: answeredQuestionIDs.map(questionID => (
-							<QuestionPreview
-								key={questionID}
-								question={questions[questionID]}
-							/>
-					  ))}
+					? unansweredQuestionIDs
+							.sort(byTimeStamp)
+							.map(questionID => (
+								<QuestionPreview
+									key={questionID}
+									question={questions[questionID]}
+								/>
+							))
+					: answeredQuestionIDs
+							.sort(byTimeStamp)
+							.map(questionID => (
+								<QuestionPreview
+									key={questionID}
+									question={questions[questionID]}
+								/>
+							))}
 			</div>
 		);
 	}

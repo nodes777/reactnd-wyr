@@ -6,10 +6,13 @@ class Leaderboard extends Component {
 
 	render() {
 		const { users } = this.props;
+		console.log(users);
 		return (
 			<div>
 				{users.allIds.map(user => {
 					const currentUser = users[user];
+					// console.log(currentUser);
+					// console.log(users);
 					const asked = currentUser.questions.length;
 					const answered = Object.keys(currentUser.answers).length;
 					const score = asked + answered;

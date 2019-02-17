@@ -14,7 +14,7 @@ export default function users(state = {}, action) {
 				...state,
 				// the user that answered the question
 				[action.answer.authedUser]: {
-					...state,
+					...state[action.answer.authedUser],
 					// change that users answers property
 					answers: {
 						// include the previous contents
