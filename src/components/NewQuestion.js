@@ -7,8 +7,7 @@ class NewQuestion extends Component {
 	componentDidMount() {}
 	state = {
 		optionOne: "",
-		optionTwo: "",
-		toHome: false
+		optionTwo: ""
 	};
 
 	// can this be refactored to one handle text entry?
@@ -29,7 +28,7 @@ class NewQuestion extends Component {
 	handleSubmit = e => {
 		e.preventDefault();
 		const { optionOne, optionTwo } = this.state;
-		const { dispatch, authedUser } = this.props;
+		const { dispatch, authedUser, history } = this.props;
 
 		const info = {
 			optionOneText: optionOne,
@@ -37,17 +36,12 @@ class NewQuestion extends Component {
 			author: authedUser
 		};
 
-		dispatch(handleAddQuestion(info));
-
-		this.setState(() => ({
-			toHome: true
-		}));
+		dispatch(handleAddQuestion(info)).then(() => {
+			history.push("/");
+		});
 	};
 
 	render() {
-		if (this.state.toHome) {
-			return <Redirect to="/" />;
-		}
 		return (
 			<div>
 				<h1>Create a New Question</h1>

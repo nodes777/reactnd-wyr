@@ -31,23 +31,25 @@ export function handleAddQuestion(info) {
 	return (dispatch, getState) => {
 		//const { authedUser } = getState()
 
-		//dispatch(showLoading());
-		return saveQuestion(info).then(question => {
-			dispatch(addQuestion(question));
-		});
-		// show and hiding the loading bar prevents the redirect to home. Why?
-		//.then(() => dispatch(hideLoading()));
+		dispatch(showLoading());
+		return (
+			saveQuestion(info)
+				.then(question => {
+					dispatch(addQuestion(question));
+				})
+				// show and hiding the loading bar prevents the redirect to home. Why?
+				.then(() => dispatch(hideLoading()))
+		);
 	};
 }
 
 export function handleAddQuestionAnswer(info) {
 	return (dispatch, getState) => {
-		//const { authedUser } = getState()
-
-		//dispatch(showLoading());
-		return saveQuestionAnswer(info).then(() => {
-			dispatch(addQuestionAnswer(info));
-		});
-		//.then(() => dispatch(hideLoading()));
+		dispatch(showLoading());
+		return saveQuestionAnswer(info)
+			.then(() => {
+				dispatch(addQuestionAnswer(info));
+			})
+			.then(() => dispatch(hideLoading()));
 	};
 }
