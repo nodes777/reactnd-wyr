@@ -46,17 +46,26 @@ class NewQuestion extends Component {
 				<div>Complete the question</div>
 				<div>Would you rather</div>
 				<input
+					aria-label="Add a question"
 					type="text"
 					onChange={this.handleTextEntryOptionOne}
 					value={this.state.optionOne}
 				/>
 				<div>or</div>
 				<input
+					aria-label="Add a question"
 					type="text"
 					onChange={this.handleTextEntryOptionTwo}
 					value={this.state.optionTwo}
 				/>
-				<button onClick={this.handleSubmit}>Submit</button>
+				<div>
+					<button
+						className="btn btn-success mt-2"
+						onClick={this.handleSubmit}
+					>
+						Submit
+					</button>
+				</div>
 			</div>
 		);
 	}
