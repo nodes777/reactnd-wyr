@@ -72,11 +72,7 @@ class Home extends Component {
 }
 
 function mapStateToProps({ authedUser, users, questions }) {
-	// BUG: Loading will be true when the user logs out
-	let loading = authedUser === null;
-
 	return {
-		loading: loading,
 		authedUser: authedUser,
 		users: users,
 		questions: questions,

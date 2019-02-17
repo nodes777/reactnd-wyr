@@ -45,11 +45,7 @@ class Nav extends Component {
 }
 
 function mapStateToProps({ authedUser, users }) {
-	// BUG: Loading will be true when the user logs out
-	let loading = authedUser === null;
-
 	return {
-		loading: loading,
 		authedUser: authedUser,
 		userName: authedUser === null ? null : users[authedUser].name
 	};
