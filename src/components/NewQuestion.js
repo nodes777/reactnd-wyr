@@ -62,6 +62,10 @@ class NewQuestion extends Component {
 					<button
 						className="btn btn-success mt-2"
 						onClick={this.handleSubmit}
+						disabled={
+							this.state.optionOne === "" ||
+							this.state.optionTwo === ""
+						}
 					>
 						Submit
 					</button>
