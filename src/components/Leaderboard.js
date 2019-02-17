@@ -38,6 +38,7 @@ class Leaderboard extends Component {
 									alt=""
 									width="50"
 									height="50"
+									className="profile-pic"
 								/>
 								<div>Asked {asked}</div>
 								<div>Answered {answered}</div>

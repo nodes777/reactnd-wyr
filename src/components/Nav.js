@@ -30,7 +30,7 @@ class Nav extends Component {
 							<li>Hello, {userName}</li>
 							<li>
 								<button
-									className=""
+									className="btn btn-warning"
 									onClick={this.handleLogoutBtn}
 								>
 									Logout

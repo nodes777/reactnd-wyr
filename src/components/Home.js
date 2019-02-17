@@ -25,12 +25,12 @@ class Home extends Component {
 			);
 		});
 
-		let unansweredButton = "btn";
-		let answeredButton = "btn";
+		let unansweredButton = "btn btn-primary";
+		let answeredButton = "btn btn-primary";
 		if (this.state.showQuestions === "unanswered") {
-			unansweredButton += " active";
+			unansweredButton = "btn btn-outline-primary";
 		} else {
-			answeredButton += " active";
+			answeredButton = "btn btn-outline-primary";
 		}
 
 		return (

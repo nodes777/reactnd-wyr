@@ -7,18 +7,24 @@ class QuestionPreview extends Component {
 		const { question, users } = this.props;
 		const author = users[question.author].name;
 		return (
-			<div key={question.id}>
-				<div>{author} asks:</div>
+			<div className="q-preview" key={question.id}>
+				<h4>{author} asks:</h4>
 				<img
 					src={users[question.author].avatarURL}
 					alt=""
 					width="50"
 					height="50"
+					className="profile-pic"
 				/>
 				<div>Would You Rather?</div>
 				<div>...{question.optionOne.text}...</div>
 
-				<Link to={`/question/${question.id}`}>View Poll</Link>
+				<Link
+					className="btn btn-success"
+					to={`/question/${question.id}`}
+				>
+					View Poll
+				</Link>
 			</div>
 		);
 	}

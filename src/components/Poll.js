@@ -32,7 +32,11 @@ const Poll = props => {
 				/>
 				<label htmlFor="optionTwo">{question.optionTwo.text}</label>
 			</div>
-			<button type="submit" onClick={handleSubmit}>
+			<button
+				type="submit"
+				className="btn btn-success"
+				onClick={handleSubmit}
+			>
 				Submit
 			</button>
 		</div>

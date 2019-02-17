@@ -15,7 +15,6 @@ code {
 
 .nav {
 	margin: auto;
-	width: 50%;
 }
 
 .center {
@@ -43,7 +42,12 @@ li {
 	text-decoration: none;
 }
 
-.avatar {
+.barPercentage {
+	position: relative;
+	top: -25px;
+}
+
+/*.avatar {
 	height: 50px;
 	border-radius: 25px;
 	margin: 10px;
@@ -52,8 +56,9 @@ li {
 .btn {
 	border: 1px solid rgba(0, 0, 0, 0.29);
 	cursor: pointer;
-	background: #fff;
+	background: darkblue;
 	position: relative;
+	color: white;
 }
 
 .btn:hover {
@@ -72,3 +77,12 @@ li {
 	background-color: #666;
 	color: white;
 }
+
+.q-preview {
+	margin: 10px;
+}
+
+.profile-pic {
+	left: 100px;
+}
+*/
