@@ -39,6 +39,7 @@ class Question extends Component {
 		const author = users[question.author].name;
 		// is there a better way to check if this question has been answered by this user?
 		const questionAnswered = users[authedUser].answers.hasOwnProperty(qid);
+		const userChoice = users[authedUser].answers[qid];
 
 		return (
 			<div>
@@ -49,9 +50,9 @@ class Question extends Component {
 					width="50"
 					height="50"
 				/>
-				<div>Would You Rather?</div>
+				<h1>Would You Rather?</h1>
 				{questionAnswered ? (
-					<Results question={question} />
+					<Results question={question} userChoice={userChoice} />
 				) : (
 					<Poll
 						question={question}
