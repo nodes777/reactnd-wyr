@@ -50,7 +50,12 @@ class Home extends Component {
 				</button>
 				{this.state.showQuestions === "unanswered"
 					? unansweredQuestionIDs
-							.sort(byTimeStamp)
+							.sort((a, b) => {
+								return (
+									questions[b].timestamp -
+									questions[a].timestamp
+								);
+							})
 							.map(questionID => (
 								<QuestionPreview
 									key={questionID}
@@ -58,7 +63,12 @@ class Home extends Component {
 								/>
 							))
 					: answeredQuestionIDs
-							.sort(byTimeStamp)
+							.sort((a, b) => {
+								return (
+									questions[b].timestamp -
+									questions[a].timestamp
+								);
+							})
 							.map(questionID => (
 								<QuestionPreview
 									key={questionID}

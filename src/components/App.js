@@ -31,8 +31,8 @@ class App extends Component {
                   <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/leaderboard" exact component={Leaderboard} />
-                    <Route path="/new" exact component={NewQuestion} />
-                    <Route path="/question/:id" exact component={Question} />
+                    <Route path="/add" exact component={NewQuestion} />
+                    <Route path="/questions/:id" exact component={Question} />
                     <Route component={NoMatch} />
                   </Switch>
                 )}

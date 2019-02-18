@@ -21,7 +21,7 @@ class QuestionPreview extends Component {
 
 				<Link
 					className="btn btn-success"
-					to={`/question/${question.id}`}
+					to={`/questions/${question.id}`}
 				>
 					View Poll
 				</Link>
