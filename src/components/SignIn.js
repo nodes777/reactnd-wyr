@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { handleLogin } from "../actions/authedUser";
 
 class SignIn extends Component {
-	componentDidMount() {}
 	handleSignInBtn = () => {
 		const { dispatch } = this.props;
 		dispatch(handleLogin(this.state.selectValue));

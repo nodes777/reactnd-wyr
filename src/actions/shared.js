@@ -6,7 +6,7 @@ import { setAuthedUser } from "../actions/authedUser";
 import { showLoading, hideLoading } from "react-redux-loading";
 
 // mock a authedUser
-const AUTHED_ID = "tylermcginnis";
+const AUTHED_ID = null;
 
 export const handleInitialData = () => {
 	return dispatch => {
