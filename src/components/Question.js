@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 import { handleAddQuestionAnswer } from "../actions/questions";
 
@@ -7,8 +8,6 @@ import Poll from "./Poll";
 import Results from "./Results";
 
 class Question extends Component {
-	componentDidMount() {}
-
 	state = {
 		selectedAnswer: "optionOne"
 	};
@@ -36,6 +35,10 @@ class Question extends Component {
 
 	render() {
 		const { question, users, authedUser, qid } = this.props;
+		if (!question) {
+			return <Redirect to="/nomatch" />;
+		}
+
 		const author = users[question.author].name;
 		// is there a better way to check if this question has been answered by this user?
 		const questionAnswered = users[authedUser].answers.hasOwnProperty(qid);

@@ -5,7 +5,6 @@ import QuestionPreview from "./QuestionPreview";
 import { byTimeStamp } from "../utils/utils.js";
 
 class Home extends Component {
-	componentDidMount() {}
 	state = {
 		showQuestions: "unanswered"
 	};
